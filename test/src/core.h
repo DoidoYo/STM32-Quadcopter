@@ -20,10 +20,11 @@ extern "C" {
 #include "libs/Delay.h"
 #include "libs/USART1.h"
 
+#include "settings.h"
+
 #ifdef __cplusplus
 }
 #endif
-
 
 
 //typedef struct vector { float x, y, z; };

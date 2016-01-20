@@ -37,13 +37,13 @@ c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/
 c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/../../../../arm-atollic-eabi/lib/armv7-m\libc_s.a(lib_a-nano-msizer.o)
                               c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/../../../../arm-atollic-eabi/lib/armv7-m\libc_s.a(lib_a-nano-reallocr.o) (_malloc_usable_size_r)
 c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m\libgcc.a(_arm_addsubdf3.o)
-                              src\libs\BMP180.o (__aeabi_dadd)
+                              src\sensors\BMP180.o (__aeabi_dadd)
 c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m\libgcc.a(_arm_muldivdf3.o)
-                              src\libs\BMP180.o (__aeabi_dmul)
+                              src\sensors\BMP180.o (__aeabi_dmul)
 c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m\libgcc.a(_arm_fixdfsi.o)
-                              src\libs\L3G4200D.o (__aeabi_d2iz)
+                              src\sensors\L3G4200D.o (__aeabi_d2iz)
 c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m\libgcc.a(_arm_fixunsdfsi.o)
-                              src\libs\BMP180.o (__aeabi_d2uiz)
+                              src\sensors\BMP180.o (__aeabi_d2uiz)
 
 Allocating common symbols
 Common symbol       size              file
@@ -80,7 +80,7 @@ Discarded input sections
                 0x00000000       0x60 src\tiny_printf.o
  .debug_ranges  0x00000000       0x50 src\tiny_printf.o
  .debug_line    0x00000000      0x3bd src\tiny_printf.o
- .debug_str     0x00000000      0x693 src\tiny_printf.o
+ .debug_str     0x00000000      0x690 src\tiny_printf.o
  .comment       0x00000000       0x83 src\tiny_printf.o
  .ARM.attributes
                 0x00000000       0x33 src\tiny_printf.o
@@ -98,6 +98,26 @@ Discarded input sections
  .text          0x00000000       0x14 src\startup_stm32f10x_md.o
  .data          0x00000000        0x0 src\startup_stm32f10x_md.o
  .bss           0x00000000        0x0 src\startup_stm32f10x_md.o
+ .text          0x00000000        0x0 src\sensors\L3G4200D.o
+ .data          0x00000000        0x0 src\sensors\L3G4200D.o
+ .bss           0x00000000        0x0 src\sensors\L3G4200D.o
+ .text._ZN8L3G4200D7readRawEPs
+                0x00000000       0x38 src\sensors\L3G4200D.o
+ .text          0x00000000        0x0 src\sensors\BMP180.o
+ .data          0x00000000        0x0 src\sensors\BMP180.o
+ .bss           0x00000000        0x0 src\sensors\BMP180.o
+ .text._ZN6BMP1808getDelayEv
+                0x00000000       0x18 src\sensors\BMP180.o
+ .text._ZN6BMP1805debugEv
+                0x00000000       0x14 src\sensors\BMP180.o
+ .text          0x00000000        0x0 src\quad\motors.o
+ .data          0x00000000        0x0 src\quad\motors.o
+ .bss           0x00000000        0x0 src\quad\motors.o
+ .debug_line    0x00000000        0x0 src\quad\motors.o
+ .debug_str     0x00000000        0x0 src\quad\motors.o
+ .comment       0x00000000       0x83 src\quad\motors.o
+ .ARM.attributes
+                0x00000000       0x33 src\quad\motors.o
  .text          0x00000000        0x0 src\main.o
  .data          0x00000000        0x0 src\main.o
  .bss           0x00000000        0x0 src\main.o
@@ -109,11 +129,6 @@ Discarded input sections
                 0x00000000       0x34 src\libs\USART1.o
  .text.USART_puts
                 0x00000000       0x38 src\libs\USART1.o
- .text          0x00000000        0x0 src\libs\L3G4200D.o
- .data          0x00000000        0x0 src\libs\L3G4200D.o
- .bss           0x00000000        0x0 src\libs\L3G4200D.o
- .text._ZN8L3G4200D7readRawEPs
-                0x00000000       0x38 src\libs\L3G4200D.o
  .text          0x00000000        0x0 src\libs\I2C.o
  .data          0x00000000        0x0 src\libs\I2C.o
  .bss           0x00000000        0x0 src\libs\I2C.o
@@ -122,18 +137,16 @@ Discarded input sections
  .text          0x00000000        0x0 src\libs\GPIO.o
  .data          0x00000000        0x0 src\libs\GPIO.o
  .bss           0x00000000        0x0 src\libs\GPIO.o
+ .text._ZN4GPIO4highEv
+                0x00000000       0x20 src\libs\GPIO.o
+ .text._ZN4GPIO3lowEv
+                0x00000000       0x20 src\libs\GPIO.o
  .text._ZN4GPIO4readEv
                 0x00000000       0x24 src\libs\GPIO.o
  .text          0x00000000        0x0 src\libs\Delay.o
  .data          0x00000000        0x0 src\libs\Delay.o
  .bss           0x00000000        0x0 src\libs\Delay.o
- .text          0x00000000        0x0 src\libs\BMP180.o
- .data          0x00000000        0x0 src\libs\BMP180.o
- .bss           0x00000000        0x0 src\libs\BMP180.o
- .text._ZN6BMP1808getDelayEv
-                0x00000000       0x18 src\libs\BMP180.o
- .text._ZN6BMP1805debugEv
-                0x00000000       0x14 src\libs\BMP180.o
+ .text.delay    0x00000000       0x2c src\libs\Delay.o
  .text          0x00000000        0x0 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_wwdg.o
  .data          0x00000000        0x0 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_wwdg.o
  .bss           0x00000000        0x0 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_wwdg.o
@@ -159,7 +172,7 @@ Discarded input sections
                 0x00000000       0x58 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_wwdg.o
  .debug_ranges  0x00000000       0x48 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_wwdg.o
  .debug_line    0x00000000      0x237 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_wwdg.o
- .debug_str     0x00000000      0x2c6 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_wwdg.o
+ .debug_str     0x00000000      0x2c3 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_wwdg.o
  .comment       0x00000000       0x83 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_wwdg.o
  .ARM.attributes
                 0x00000000       0x33 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_wwdg.o
@@ -407,7 +420,7 @@ Discarded input sections
                 0x00000000      0x2f0 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_tim.o
  .debug_ranges  0x00000000      0x2e0 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_tim.o
  .debug_line    0x00000000      0xa6e Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_tim.o
- .debug_str     0x00000000      0xe46 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_tim.o
+ .debug_str     0x00000000      0xe43 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_tim.o
  .comment       0x00000000       0x83 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_tim.o
  .ARM.attributes
                 0x00000000       0x33 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_tim.o
@@ -465,7 +478,7 @@ Discarded input sections
                 0x00000000       0xd0 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_spi.o
  .debug_ranges  0x00000000       0xc0 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_spi.o
  .debug_line    0x00000000      0x415 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_spi.o
- .debug_str     0x00000000      0x666 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_spi.o
+ .debug_str     0x00000000      0x663 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_spi.o
  .comment       0x00000000       0x83 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_spi.o
  .ARM.attributes
                 0x00000000       0x33 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_spi.o
@@ -539,7 +552,7 @@ Discarded input sections
                 0x00000000      0x108 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_sdio.o
  .debug_ranges  0x00000000       0xf8 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_sdio.o
  .debug_line    0x00000000      0x43e Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_sdio.o
- .debug_str     0x00000000      0x699 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_sdio.o
+ .debug_str     0x00000000      0x696 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_sdio.o
  .comment       0x00000000       0x83 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_sdio.o
  .ARM.attributes
                 0x00000000       0x33 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_sdio.o
@@ -581,7 +594,7 @@ Discarded input sections
                 0x00000000       0x88 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rtc.o
  .debug_ranges  0x00000000       0x78 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rtc.o
  .debug_line    0x00000000      0x2ce Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rtc.o
- .debug_str     0x00000000      0x417 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rtc.o
+ .debug_str     0x00000000      0x414 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rtc.o
  .comment       0x00000000       0x83 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rtc.o
  .ARM.attributes
                 0x00000000       0x33 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rtc.o
@@ -674,7 +687,7 @@ Discarded input sections
                 0x00000000       0x60 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_pwr.o
  .debug_ranges  0x00000000       0x50 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_pwr.o
  .debug_line    0x00000000      0x27a Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_pwr.o
- .debug_str     0x00000000      0x38b Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_pwr.o
+ .debug_str     0x00000000      0x388 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_pwr.o
  .comment       0x00000000       0x83 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_pwr.o
  .ARM.attributes
                 0x00000000       0x33 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_pwr.o
@@ -700,7 +713,7 @@ Discarded input sections
                 0x00000000       0x48 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_iwdg.o
  .debug_ranges  0x00000000       0x38 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_iwdg.o
  .debug_line    0x00000000      0x210 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_iwdg.o
- .debug_str     0x00000000      0x2c5 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_iwdg.o
+ .debug_str     0x00000000      0x2c2 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_iwdg.o
  .comment       0x00000000       0x83 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_iwdg.o
  .ARM.attributes
                 0x00000000       0x33 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_iwdg.o
@@ -769,6 +782,10 @@ Discarded input sections
                 0x00000000       0x34 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_gpio.o
  .text.GPIO_ReadOutputData
                 0x00000000       0x1c Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_gpio.o
+ .text.GPIO_SetBits
+                0x00000000       0x1c Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_gpio.o
+ .text.GPIO_ResetBits
+                0x00000000       0x1c Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_gpio.o
  .text.GPIO_WriteBit
                 0x00000000       0x30 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_gpio.o
  .text.GPIO_Write
@@ -832,7 +849,7 @@ Discarded input sections
                 0x00000000       0xb0 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_fsmc.o
  .debug_ranges  0x00000000       0xa0 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_fsmc.o
  .debug_line    0x00000000      0x447 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_fsmc.o
- .debug_str     0x00000000      0x7e3 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_fsmc.o
+ .debug_str     0x00000000      0x7e0 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_fsmc.o
  .comment       0x00000000       0x83 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_fsmc.o
  .ARM.attributes
                 0x00000000       0x33 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_fsmc.o
@@ -902,7 +919,7 @@ Discarded input sections
                 0x00000000       0xf8 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_flash.o
  .debug_ranges  0x00000000       0xe8 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_flash.o
  .debug_line    0x00000000      0x4cd Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_flash.o
- .debug_str     0x00000000      0x651 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_flash.o
+ .debug_str     0x00000000      0x64e Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_flash.o
  .comment       0x00000000       0x83 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_flash.o
  .ARM.attributes
                 0x00000000       0x33 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_flash.o
@@ -932,7 +949,7 @@ Discarded input sections
                 0x00000000       0x58 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_exti.o
  .debug_ranges  0x00000000       0x48 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_exti.o
  .debug_line    0x00000000      0x298 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_exti.o
- .debug_str     0x00000000      0x3b2 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_exti.o
+ .debug_str     0x00000000      0x3af Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_exti.o
  .comment       0x00000000       0x83 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_exti.o
  .ARM.attributes
                 0x00000000       0x33 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_exti.o
@@ -967,7 +984,7 @@ Discarded input sections
                 0x00000000       0x70 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_dma.o
  .debug_ranges  0x00000000       0x60 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_dma.o
  .debug_line    0x00000000      0x2f7 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_dma.o
- .debug_str     0x00000000      0x420 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_dma.o
+ .debug_str     0x00000000      0x41d Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_dma.o
  .comment       0x00000000       0x83 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_dma.o
  .ARM.attributes
                 0x00000000       0x33 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_dma.o
@@ -987,7 +1004,7 @@ Discarded input sections
                 0x00000000       0x30 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_dbgmcu.o
  .debug_ranges  0x00000000       0x20 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_dbgmcu.o
  .debug_line    0x00000000      0x1da Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_dbgmcu.o
- .debug_str     0x00000000      0x25b Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_dbgmcu.o
+ .debug_str     0x00000000      0x258 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_dbgmcu.o
  .comment       0x00000000       0x83 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_dbgmcu.o
  .ARM.attributes
                 0x00000000       0x33 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_dbgmcu.o
@@ -1024,7 +1041,7 @@ Discarded input sections
                 0x00000000       0x78 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_dac.o
  .debug_ranges  0x00000000       0x68 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_dac.o
  .debug_line    0x00000000      0x2dc Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_dac.o
- .debug_str     0x00000000      0x418 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_dac.o
+ .debug_str     0x00000000      0x415 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_dac.o
  .comment       0x00000000       0x83 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_dac.o
  .ARM.attributes
                 0x00000000       0x33 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_dac.o
@@ -1050,7 +1067,7 @@ Discarded input sections
                 0x00000000       0x48 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_crc.o
  .debug_ranges  0x00000000       0x38 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_crc.o
  .debug_line    0x00000000      0x21f Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_crc.o
- .debug_str     0x00000000      0x2a4 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_crc.o
+ .debug_str     0x00000000      0x2a1 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_crc.o
  .comment       0x00000000       0x83 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_crc.o
  .ARM.attributes
                 0x00000000       0x33 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_crc.o
@@ -1091,7 +1108,7 @@ Discarded input sections
                 0x00000000       0x88 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_cec.o
  .debug_ranges  0x00000000       0x78 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_cec.o
  .debug_line    0x00000000      0x305 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_cec.o
- .debug_str     0x00000000      0x3df Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_cec.o
+ .debug_str     0x00000000      0x3dc Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_cec.o
  .comment       0x00000000       0x83 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_cec.o
  .ARM.attributes
                 0x00000000       0x33 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_cec.o
@@ -1155,7 +1172,7 @@ Discarded input sections
                 0x00000000       0xe0 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_can.o
  .debug_ranges  0x00000000       0xd0 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_can.o
  .debug_line    0x00000000      0x55f Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_can.o
- .debug_str     0x00000000      0x797 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_can.o
+ .debug_str     0x00000000      0x794 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_can.o
  .comment       0x00000000       0x83 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_can.o
  .ARM.attributes
                 0x00000000       0x33 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_can.o
@@ -1193,7 +1210,7 @@ Discarded input sections
                 0x00000000       0x78 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_bkp.o
  .debug_ranges  0x00000000       0x68 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_bkp.o
  .debug_line    0x00000000      0x286 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_bkp.o
- .debug_str     0x00000000      0x61e Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_bkp.o
+ .debug_str     0x00000000      0x61b Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_bkp.o
  .comment       0x00000000       0x83 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_bkp.o
  .ARM.attributes
                 0x00000000       0x33 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_bkp.o
@@ -1278,7 +1295,7 @@ Discarded input sections
                 0x00000000      0x138 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_adc.o
  .debug_ranges  0x00000000      0x128 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_adc.o
  .debug_line    0x00000000      0x515 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_adc.o
- .debug_str     0x00000000      0x764 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_adc.o
+ .debug_str     0x00000000      0x761 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_adc.o
  .comment       0x00000000       0x83 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_adc.o
  .ARM.attributes
                 0x00000000       0x33 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_adc.o
@@ -1302,7 +1319,7 @@ Discarded input sections
                 0x00000000       0x40 Libraries\STM32F10x_StdPeriph_Driver\src\misc.o
  .debug_ranges  0x00000000       0x30 Libraries\STM32F10x_StdPeriph_Driver\src\misc.o
  .debug_line    0x00000000      0x238 Libraries\STM32F10x_StdPeriph_Driver\src\misc.o
- .debug_str     0x00000000      0x427 Libraries\STM32F10x_StdPeriph_Driver\src\misc.o
+ .debug_str     0x00000000      0x424 Libraries\STM32F10x_StdPeriph_Driver\src\misc.o
  .comment       0x00000000       0x83 Libraries\STM32F10x_StdPeriph_Driver\src\misc.o
  .ARM.attributes
                 0x00000000       0x33 Libraries\STM32F10x_StdPeriph_Driver\src\misc.o
@@ -1522,13 +1539,14 @@ LOAD src\tiny_printf.o
 LOAD src\system_stm32f10x.o
 LOAD src\stm32f1xx_it.o
 LOAD src\startup_stm32f10x_md.o
+LOAD src\sensors\L3G4200D.o
+LOAD src\sensors\BMP180.o
+LOAD src\quad\motors.o
 LOAD src\main.o
 LOAD src\libs\USART1.o
-LOAD src\libs\L3G4200D.o
 LOAD src\libs\I2C.o
 LOAD src\libs\GPIO.o
 LOAD src\libs\Delay.o
-LOAD src\libs\BMP180.o
 LOAD Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_wwdg.o
 LOAD Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.o
 LOAD Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_tim.o
@@ -1577,7 +1595,7 @@ LOAD c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib
                 0x08000000                g_pfnVectors
                 0x0800010c                . = ALIGN (0x4)
 
-.text           0x0800010c     0x26e4
+.text           0x0800010c     0x2648
                 0x0800010c                . = ALIGN (0x4)
  *(.text)
  .text          0x0800010c       0x40 c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m/crtbegin.o
@@ -1692,208 +1710,194 @@ LOAD c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib
                 0x08000b98                USART1_IRQHandler
                 0x08000b98                I2C1_ER_IRQHandler
                 0x08000b98                USBWakeUp_IRQHandler
- .text.main     0x08000b9c       0x6c src\main.o
-                0x08000b9c                main
- .text._Z41__static_initialization_and_destruction_0ii
-                0x08000c08       0x64 src\main.o
- .text._GLOBAL__sub_I_i2c
-                0x08000c6c       0x10 src\main.o
- .text.initUSART1
-                0x08000c7c       0x98 src\libs\USART1.o
-                0x08000c7c                initUSART1
  .text._ZN8L3G4200DC2EP3I2C
-                0x08000d14       0x20 src\libs\L3G4200D.o
-                0x08000d14                L3G4200D::L3G4200D(I2C*)
-                0x08000d14                L3G4200D::L3G4200D(I2C*)
+                0x08000b9c       0x20 src\sensors\L3G4200D.o
+                0x08000b9c                L3G4200D::L3G4200D(I2C*)
+                0x08000b9c                L3G4200D::L3G4200D(I2C*)
  .text._ZN8L3G4200D4initEv
-                0x08000d34       0x24 src\libs\L3G4200D.o
-                0x08000d34                L3G4200D::init()
+                0x08000bbc       0x24 src\sensors\L3G4200D.o
+                0x08000bbc                L3G4200D::init()
  .text._ZN8L3G4200D9readAngleERsS0_S0_
-                0x08000d58      0x1d8 src\libs\L3G4200D.o
-                0x08000d58                L3G4200D::readAngle(short&, short&, short&)
+                0x08000be0      0x1d8 src\sensors\L3G4200D.o
+                0x08000be0                L3G4200D::readAngle(short&, short&, short&)
  .text._ZN8L3G4200D7readRawERsS0_S0_
-                0x08000f30       0x58 src\libs\L3G4200D.o
-                0x08000f30                L3G4200D::readRaw(short&, short&, short&)
+                0x08000db8       0x58 src\sensors\L3G4200D.o
+                0x08000db8                L3G4200D::readRaw(short&, short&, short&)
  .text._ZN8L3G4200D7getBitsEhiPh
-                0x08000f88       0x2c src\libs\L3G4200D.o
-                0x08000f88                L3G4200D::getBits(unsigned char, int, unsigned char*)
+                0x08000e10       0x2c src\sensors\L3G4200D.o
+                0x08000e10                L3G4200D::getBits(unsigned char, int, unsigned char*)
  .text._ZN8L3G4200D7sendBitEhh
-                0x08000fb4       0x28 src\libs\L3G4200D.o
-                0x08000fb4                L3G4200D::sendBit(unsigned char, unsigned char)
- .text._ZN3I2CC2EP11I2C_TypeDefj
-                0x08000fdc       0xc8 src\libs\I2C.o
-                0x08000fdc                I2C::I2C(I2C_TypeDef*, unsigned int)
-                0x08000fdc                I2C::I2C(I2C_TypeDef*, unsigned int)
- .text._ZN3I2C8sendByteEhhh
-                0x080010a4      0x130 src\libs\I2C.o
-                0x080010a4                I2C::sendByte(unsigned char, unsigned char, unsigned char)
- .text._ZN3I2C9readBytesEhhiPh
-                0x080011d4      0x190 src\libs\I2C.o
-                0x080011d4                I2C::readBytes(unsigned char, unsigned char, int, unsigned char*)
- .text._ZN4GPIOC2EP12GPIO_TypeDefh16GPIOMode_TypeDef
-                0x08001364       0xd8 src\libs\GPIO.o
-                0x08001364                GPIO::GPIO(GPIO_TypeDef*, unsigned char, GPIOMode_TypeDef)
-                0x08001364                GPIO::GPIO(GPIO_TypeDef*, unsigned char, GPIOMode_TypeDef)
- .text._ZN4GPIO4highEv
-                0x0800143c       0x20 src\libs\GPIO.o
-                0x0800143c                GPIO::high()
- .text._ZN4GPIO3lowEv
-                0x0800145c       0x20 src\libs\GPIO.o
-                0x0800145c                GPIO::low()
- .text.NVIC_SetPriority
-                0x0800147c       0x54 src\libs\Delay.o
- .text.SysTick_Config
-                0x080014d0       0x44 src\libs\Delay.o
- .text.initMillis
-                0x08001514       0x20 src\libs\Delay.o
-                0x08001514                initMillis
- .text.millis   0x08001534       0x18 src\libs\Delay.o
-                0x08001534                millis
- .text.delay    0x0800154c       0x2c src\libs\Delay.o
-                0x0800154c                delay
- .text.incrementMillis
-                0x08001578       0x1c src\libs\Delay.o
-                0x08001578                incrementMillis
+                0x08000e3c       0x28 src\sensors\L3G4200D.o
+                0x08000e3c                L3G4200D::sendBit(unsigned char, unsigned char)
  .text._ZN6BMP180C2EP3I2Cs
-                0x08001594       0x28 src\libs\BMP180.o
-                0x08001594                BMP180::BMP180(I2C*, short)
-                0x08001594                BMP180::BMP180(I2C*, short)
+                0x08000e64       0x28 src\sensors\BMP180.o
+                0x08000e64                BMP180::BMP180(I2C*, short)
+                0x08000e64                BMP180::BMP180(I2C*, short)
  .text._ZN6BMP1804initEv
-                0x080015bc      0x1c4 src\libs\BMP180.o
-                0x080015bc                BMP180::init()
+                0x08000e8c      0x1c4 src\sensors\BMP180.o
+                0x08000e8c                BMP180::init()
  .text._ZN6BMP18011getPressureERl
-                0x08001780      0x648 src\libs\BMP180.o
-                0x08001780                BMP180::getPressure(long&)
+                0x08001050      0x648 src\sensors\BMP180.o
+                0x08001050                BMP180::getPressure(long&)
+ .text.main     0x08001698       0x44 src\main.o
+                0x08001698                main
+ .text._Z41__static_initialization_and_destruction_0ii
+                0x080016dc       0x94 src\main.o
+ .text._GLOBAL__sub_I_i2c
+                0x08001770       0x10 src\main.o
+ .text.initUSART1
+                0x08001780       0x98 src\libs\USART1.o
+                0x08001780                initUSART1
+ .text._ZN3I2CC2EP11I2C_TypeDefj
+                0x08001818       0xc8 src\libs\I2C.o
+                0x08001818                I2C::I2C(I2C_TypeDef*, unsigned int)
+                0x08001818                I2C::I2C(I2C_TypeDef*, unsigned int)
+ .text._ZN3I2C8sendByteEhhh
+                0x080018e0      0x130 src\libs\I2C.o
+                0x080018e0                I2C::sendByte(unsigned char, unsigned char, unsigned char)
+ .text._ZN3I2C9readBytesEhhiPh
+                0x08001a10      0x190 src\libs\I2C.o
+                0x08001a10                I2C::readBytes(unsigned char, unsigned char, int, unsigned char*)
+ .text._ZN4GPIOC2EP12GPIO_TypeDefh16GPIOMode_TypeDef
+                0x08001ba0       0xd8 src\libs\GPIO.o
+                0x08001ba0                GPIO::GPIO(GPIO_TypeDef*, unsigned char, GPIOMode_TypeDef)
+                0x08001ba0                GPIO::GPIO(GPIO_TypeDef*, unsigned char, GPIOMode_TypeDef)
+ .text.NVIC_SetPriority
+                0x08001c78       0x54 src\libs\Delay.o
+ .text.SysTick_Config
+                0x08001ccc       0x44 src\libs\Delay.o
+ .text.initMillis
+                0x08001d10       0x20 src\libs\Delay.o
+                0x08001d10                initMillis
+ .text.millis   0x08001d30       0x18 src\libs\Delay.o
+                0x08001d30                millis
+ .text.incrementMillis
+                0x08001d48       0x1c src\libs\Delay.o
+                0x08001d48                incrementMillis
  .text.USART_Init
-                0x08001dc8      0x174 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.o
-                0x08001dc8                USART_Init
+                0x08001d64      0x174 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.o
+                0x08001d64                USART_Init
  .text.USART_ClockInit
-                0x08001f3c       0x54 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.o
-                0x08001f3c                USART_ClockInit
+                0x08001ed8       0x54 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.o
+                0x08001ed8                USART_ClockInit
  .text.USART_ClockStructInit
-                0x08001f90       0x2c Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.o
-                0x08001f90                USART_ClockStructInit
+                0x08001f2c       0x2c Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.o
+                0x08001f2c                USART_ClockStructInit
  .text.USART_Cmd
-                0x08001fbc       0x40 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.o
-                0x08001fbc                USART_Cmd
+                0x08001f58       0x40 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.o
+                0x08001f58                USART_Cmd
  .text.RCC_GetClocksFreq
-                0x08001ffc      0x164 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.o
-                0x08001ffc                RCC_GetClocksFreq
+                0x08001f98      0x164 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.o
+                0x08001f98                RCC_GetClocksFreq
  .text.RCC_APB2PeriphClockCmd
-                0x08002160       0x3c Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.o
-                0x08002160                RCC_APB2PeriphClockCmd
+                0x080020fc       0x3c Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.o
+                0x080020fc                RCC_APB2PeriphClockCmd
  .text.RCC_APB1PeriphClockCmd
-                0x0800219c       0x3c Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.o
-                0x0800219c                RCC_APB1PeriphClockCmd
+                0x08002138       0x3c Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.o
+                0x08002138                RCC_APB1PeriphClockCmd
  .text.I2C_Init
-                0x080021d8      0x184 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
-                0x080021d8                I2C_Init
- .text.I2C_Cmd  0x0800235c       0x40 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
-                0x0800235c                I2C_Cmd
+                0x08002174      0x184 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
+                0x08002174                I2C_Init
+ .text.I2C_Cmd  0x080022f8       0x40 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
+                0x080022f8                I2C_Cmd
  .text.I2C_GenerateSTART
-                0x0800239c       0x40 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
-                0x0800239c                I2C_GenerateSTART
+                0x08002338       0x40 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
+                0x08002338                I2C_GenerateSTART
  .text.I2C_GenerateSTOP
-                0x080023dc       0x40 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
-                0x080023dc                I2C_GenerateSTOP
+                0x08002378       0x40 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
+                0x08002378                I2C_GenerateSTOP
  .text.I2C_AcknowledgeConfig
-                0x0800241c       0x40 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
-                0x0800241c                I2C_AcknowledgeConfig
+                0x080023b8       0x40 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
+                0x080023b8                I2C_AcknowledgeConfig
  .text.I2C_SendData
-                0x0800245c       0x20 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
-                0x0800245c                I2C_SendData
+                0x080023f8       0x20 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
+                0x080023f8                I2C_SendData
  .text.I2C_ReceiveData
-                0x0800247c       0x1c Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
-                0x0800247c                I2C_ReceiveData
+                0x08002418       0x1c Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
+                0x08002418                I2C_ReceiveData
  .text.I2C_Send7bitAddress
-                0x08002498       0x3c Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
-                0x08002498                I2C_Send7bitAddress
+                0x08002434       0x3c Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
+                0x08002434                I2C_Send7bitAddress
  .text.I2C_NACKPositionConfig
-                0x080024d4       0x40 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
-                0x080024d4                I2C_NACKPositionConfig
+                0x08002470       0x40 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
+                0x08002470                I2C_NACKPositionConfig
  .text.I2C_CheckEvent
-                0x08002514       0x60 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
-                0x08002514                I2C_CheckEvent
+                0x080024b0       0x60 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
+                0x080024b0                I2C_CheckEvent
  .text.I2C_GetFlagStatus
-                0x08002574       0x68 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
-                0x08002574                I2C_GetFlagStatus
+                0x08002510       0x68 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
+                0x08002510                I2C_GetFlagStatus
  .text.GPIO_Init
-                0x080025dc      0x178 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_gpio.o
-                0x080025dc                GPIO_Init
- .text.GPIO_SetBits
-                0x08002754       0x1c Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_gpio.o
-                0x08002754                GPIO_SetBits
- .text.GPIO_ResetBits
-                0x08002770       0x1c Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_gpio.o
-                0x08002770                GPIO_ResetBits
+                0x08002578      0x178 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_gpio.o
+                0x08002578                GPIO_Init
  .text.__libc_init_array
-                0x0800278c       0x4c c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/../../../../arm-atollic-eabi/lib/armv7-m\libc_s.a(lib_a-init.o)
-                0x0800278c                __libc_init_array
+                0x080026f0       0x4c c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/../../../../arm-atollic-eabi/lib/armv7-m\libc_s.a(lib_a-init.o)
+                0x080026f0                __libc_init_array
  *(.glue_7)
  .glue_7        0x00000000        0x0 linker stubs
  *(.glue_7t)
  .glue_7t       0x00000000        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x080027d8        0x0 c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m/crtbegin.o
+ .eh_frame      0x0800273c        0x0 c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m/crtbegin.o
  *(.init)
- .init          0x080027d8        0x4 c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m/crti.o
-                0x080027d8                _init
- .init          0x080027dc        0x8 c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m/crtn.o
+ .init          0x0800273c        0x4 c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m/crti.o
+                0x0800273c                _init
+ .init          0x08002740        0x8 c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m/crtn.o
  *(.fini)
- .fini          0x080027e4        0x4 c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m/crti.o
-                0x080027e4                _fini
- .fini          0x080027e8        0x8 c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m/crtn.o
-                0x080027f0                . = ALIGN (0x4)
-                0x080027f0                _etext = .
+ .fini          0x08002748        0x4 c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m/crti.o
+                0x08002748                _fini
+ .fini          0x0800274c        0x8 c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m/crtn.o
+                0x08002754                . = ALIGN (0x4)
+                0x08002754                _etext = .
 
-.vfp11_veneer   0x080027f0        0x0
+.vfp11_veneer   0x08002754        0x0
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x080027f0        0x0
+.v4_bx          0x08002754        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x080027f0        0x0
+.iplt           0x08002754        0x0
  .iplt          0x00000000        0x0 c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m/crtbegin.o
 
-.rel.dyn        0x080027f0        0x0
+.rel.dyn        0x08002754        0x0
  .rel.iplt      0x00000000        0x0 c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m/crtbegin.o
 
-.rodata         0x080027f0        0x0
-                0x080027f0                . = ALIGN (0x4)
+.rodata         0x08002754        0x0
+                0x08002754                . = ALIGN (0x4)
  *(.rodata)
  *(.rodata*)
-                0x080027f0                . = ALIGN (0x4)
+                0x08002754                . = ALIGN (0x4)
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM            0x080027f0        0x0
-                0x080027f0                __exidx_start = .
+.ARM            0x08002754        0x0
+                0x08002754                __exidx_start = .
  *(.ARM.exidx*)
-                0x080027f0                __exidx_end = .
+                0x08002754                __exidx_end = .
 
-.preinit_array  0x080027f0        0x0
-                0x080027f0                PROVIDE (__preinit_array_start, .)
+.preinit_array  0x08002754        0x0
+                0x08002754                PROVIDE (__preinit_array_start, .)
  *(.preinit_array*)
-                0x080027f0                PROVIDE (__preinit_array_end, .)
+                0x08002754                PROVIDE (__preinit_array_end, .)
 
-.init_array     0x080027f0        0x8
-                0x080027f0                PROVIDE (__init_array_start, .)
+.init_array     0x08002754        0x8
+                0x08002754                PROVIDE (__init_array_start, .)
  *(SORT(.init_array.*))
  *(.init_array*)
- .init_array    0x080027f0        0x4 c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m/crtbegin.o
- .init_array    0x080027f4        0x4 src\main.o
-                0x080027f8                PROVIDE (__init_array_end, .)
+ .init_array    0x08002754        0x4 c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m/crtbegin.o
+ .init_array    0x08002758        0x4 src\main.o
+                0x0800275c                PROVIDE (__init_array_end, .)
 
-.fini_array     0x080027f8        0x4
-                0x080027f8                PROVIDE (__fini_array_start, .)
+.fini_array     0x0800275c        0x4
+                0x0800275c                PROVIDE (__fini_array_start, .)
  *(SORT(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x080027f8        0x4 c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m/crtbegin.o
-                0x080027fc                PROVIDE (__fini_array_end, .)
-                0x080027fc                _sidata = LOADADDR (.data)
+ .fini_array    0x0800275c        0x4 c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m/crtbegin.o
+                0x08002760                PROVIDE (__fini_array_end, .)
+                0x08002760                _sidata = LOADADDR (.data)
 
-.data           0x20000000       0x24 load address 0x080027fc
+.data           0x20000000       0x24 load address 0x08002760
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                _sdata = .
  *(.data)
@@ -1902,13 +1906,13 @@ LOAD c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib
                 0x20000000        0x4 src\system_stm32f10x.o
                 0x20000000                SystemCoreClock
  .data.READ_TEMP
-                0x20000004        0x4 src\libs\BMP180.o
+                0x20000004        0x4 src\sensors\BMP180.o
                 0x20000004                READ_TEMP
  .data.SEND_PRESS
-                0x20000008        0x4 src\libs\BMP180.o
+                0x20000008        0x4 src\sensors\BMP180.o
                 0x20000008                SEND_PRESS
  .data.READ_PRESS
-                0x2000000c        0x4 src\libs\BMP180.o
+                0x2000000c        0x4 src\sensors\BMP180.o
                 0x2000000c                READ_PRESS
  .data.APBAHBPrescTable
                 0x20000010       0x10 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.o
@@ -1917,43 +1921,49 @@ LOAD c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib
                 0x20000024                . = ALIGN (0x4)
                 0x20000024                _edata = .
 
-.igot.plt       0x20000024        0x0 load address 0x08002820
+.igot.plt       0x20000024        0x0 load address 0x08002784
  .igot.plt      0x00000000        0x0 c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m/crtbegin.o
                 0x20000024                . = ALIGN (0x4)
 
-.bss            0x20000024       0x8c load address 0x08002820
+.bss            0x20000024       0xa4 load address 0x08002784
                 0x20000024                _sbss = .
                 0x20000024                __bss_start__ = _sbss
  *(.bss)
  .bss           0x20000024       0x1c c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m/crtbegin.o
  *(.bss*)
- .bss.i2c       0x20000040        0x4 src\main.o
-                0x20000040                i2c
- .bss.bmp       0x20000044       0x58 src\main.o
-                0x20000044                bmp
- .bss.gyro      0x2000009c        0x4 src\main.o
-                0x2000009c                gyro
- .bss.led       0x200000a0        0x8 src\main.o
-                0x200000a0                led
  .bss.SEND_TEMP
-                0x200000a8        0x4 src\libs\BMP180.o
-                0x200000a8                SEND_TEMP
+                0x20000040        0x4 src\sensors\BMP180.o
+                0x20000040                SEND_TEMP
+ .bss.i2c       0x20000044        0x4 src\main.o
+                0x20000044                i2c
+ .bss.bmp       0x20000048       0x58 src\main.o
+                0x20000048                bmp
+ .bss.gyro      0x200000a0        0x4 src\main.o
+                0x200000a0                gyro
+ .bss.ledB      0x200000a4        0x8 src\main.o
+                0x200000a4                ledB
+ .bss.ledR      0x200000ac        0x8 src\main.o
+                0x200000ac                ledR
+ .bss.buzzer    0x200000b4        0x8 src\main.o
+                0x200000b4                buzzer
+ .bss.button    0x200000bc        0x8 src\main.o
+                0x200000bc                button
  *(COMMON)
- COMMON         0x200000ac        0x4 src\libs\Delay.o
-                0x200000ac                _millisCounter
-                0x200000b0                . = ALIGN (0x4)
-                0x200000b0                _ebss = .
-                0x200000b0                __bss_end__ = _ebss
+ COMMON         0x200000c4        0x4 src\libs\Delay.o
+                0x200000c4                _millisCounter
+                0x200000c8                . = ALIGN (0x4)
+                0x200000c8                _ebss = .
+                0x200000c8                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x200000b0      0x100 load address 0x08002820
-                0x200000b0                . = ALIGN (0x4)
-                0x200000b0                PROVIDE (end, .)
-                0x200000b0                PROVIDE (_end, .)
-                0x200000b0                . = (. + _Min_Heap_Size)
-                0x200001b0                . = (. + _Min_Stack_Size)
- *fill*         0x200000b0      0x100 
-                0x200001b0                . = ALIGN (0x4)
+                0x200000c8      0x100 load address 0x08002784
+                0x200000c8                . = ALIGN (0x4)
+                0x200000c8                PROVIDE (end, .)
+                0x200000c8                PROVIDE (_end, .)
+                0x200000c8                . = (. + _Min_Heap_Size)
+                0x200001c8                . = (. + _Min_Stack_Size)
+ *fill*         0x200000c8      0x100 
+                0x200001c8                . = ALIGN (0x4)
 
 .memory_b1_text
  *(.mb1text)
@@ -1980,19 +1990,19 @@ LOAD c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib
  .ARM.attributes
                 0x000000b0       0x21 src\startup_stm32f10x_md.o
  .ARM.attributes
-                0x000000d1       0x33 src\main.o
+                0x000000d1       0x33 src\sensors\L3G4200D.o
  .ARM.attributes
-                0x00000104       0x33 src\libs\USART1.o
+                0x00000104       0x33 src\sensors\BMP180.o
  .ARM.attributes
-                0x00000137       0x33 src\libs\L3G4200D.o
+                0x00000137       0x33 src\main.o
  .ARM.attributes
-                0x0000016a       0x33 src\libs\I2C.o
+                0x0000016a       0x33 src\libs\USART1.o
  .ARM.attributes
-                0x0000019d       0x33 src\libs\GPIO.o
+                0x0000019d       0x33 src\libs\I2C.o
  .ARM.attributes
-                0x000001d0       0x33 src\libs\Delay.o
+                0x000001d0       0x33 src\libs\GPIO.o
  .ARM.attributes
-                0x00000203       0x33 src\libs\BMP180.o
+                0x00000203       0x33 src\libs\Delay.o
  .ARM.attributes
                 0x00000236       0x33 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.o
  .ARM.attributes
@@ -2015,33 +2025,33 @@ LOAD c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib
                 0x000003a3       0x1d c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m/crtn.o
 OUTPUT(test.elf elf32-littlearm)
 
-.debug_info     0x00000000     0x552b
+.debug_info     0x00000000     0x555b
  .debug_info    0x00000000      0x47d src\system_stm32f10x.o
  .debug_info    0x0000047d      0x13a src\stm32f1xx_it.o
- .debug_info    0x000005b7       0x8d src\startup_stm32f10x_md.o
- .debug_info    0x00000644      0x8c4 src\main.o
- .debug_info    0x00000f08      0x4ce src\libs\USART1.o
- .debug_info    0x000013d6      0x658 src\libs\L3G4200D.o
- .debug_info    0x00001a2e      0x59e src\libs\I2C.o
- .debug_info    0x00001fcc      0x3cd src\libs\GPIO.o
- .debug_info    0x00002399      0x60a src\libs\Delay.o
- .debug_info    0x000029a3      0x71c src\libs\BMP180.o
- .debug_info    0x000030bf      0x9ec Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.o
- .debug_info    0x00003aab      0x891 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.o
- .debug_info    0x0000433c      0xb04 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
- .debug_info    0x00004e40      0x6eb Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_gpio.o
+ .debug_info    0x000005b7       0x8a src\startup_stm32f10x_md.o
+ .debug_info    0x00000641      0x658 src\sensors\L3G4200D.o
+ .debug_info    0x00000c99      0x71c src\sensors\BMP180.o
+ .debug_info    0x000013b5      0x8f7 src\main.o
+ .debug_info    0x00001cac      0x4ce src\libs\USART1.o
+ .debug_info    0x0000217a      0x59e src\libs\I2C.o
+ .debug_info    0x00002718      0x3cd src\libs\GPIO.o
+ .debug_info    0x00002ae5      0x60a src\libs\Delay.o
+ .debug_info    0x000030ef      0x9ec Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.o
+ .debug_info    0x00003adb      0x891 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.o
+ .debug_info    0x0000436c      0xb04 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
+ .debug_info    0x00004e70      0x6eb Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_gpio.o
 
 .debug_abbrev   0x00000000     0x164a
  .debug_abbrev  0x00000000      0x14e src\system_stm32f10x.o
  .debug_abbrev  0x0000014e       0x7f src\stm32f1xx_it.o
  .debug_abbrev  0x000001cd       0x12 src\startup_stm32f10x_md.o
- .debug_abbrev  0x000001df      0x269 src\main.o
- .debug_abbrev  0x00000448      0x15d src\libs\USART1.o
- .debug_abbrev  0x000005a5      0x225 src\libs\L3G4200D.o
- .debug_abbrev  0x000007ca      0x214 src\libs\I2C.o
- .debug_abbrev  0x000009de      0x1e8 src\libs\GPIO.o
- .debug_abbrev  0x00000bc6      0x1cb src\libs\Delay.o
- .debug_abbrev  0x00000d91      0x269 src\libs\BMP180.o
+ .debug_abbrev  0x000001df      0x225 src\sensors\L3G4200D.o
+ .debug_abbrev  0x00000404      0x269 src\sensors\BMP180.o
+ .debug_abbrev  0x0000066d      0x269 src\main.o
+ .debug_abbrev  0x000008d6      0x15d src\libs\USART1.o
+ .debug_abbrev  0x00000a33      0x214 src\libs\I2C.o
+ .debug_abbrev  0x00000c47      0x1e8 src\libs\GPIO.o
+ .debug_abbrev  0x00000e2f      0x1cb src\libs\Delay.o
  .debug_abbrev  0x00000ffa      0x164 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.o
  .debug_abbrev  0x0000115e      0x1bc Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.o
  .debug_abbrev  0x0000131a      0x166 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
@@ -2055,19 +2065,19 @@ OUTPUT(test.elf elf32-littlearm)
  .debug_aranges
                 0x00000098       0x28 src\startup_stm32f10x_md.o
  .debug_aranges
-                0x000000c0       0x30 src\main.o
+                0x000000c0       0x50 src\sensors\L3G4200D.o
  .debug_aranges
-                0x000000f0       0x38 src\libs\USART1.o
+                0x00000110       0x40 src\sensors\BMP180.o
  .debug_aranges
-                0x00000128       0x50 src\libs\L3G4200D.o
+                0x00000150       0x30 src\main.o
  .debug_aranges
-                0x00000178       0x38 src\libs\I2C.o
+                0x00000180       0x38 src\libs\USART1.o
  .debug_aranges
-                0x000001b0       0x38 src\libs\GPIO.o
+                0x000001b8       0x38 src\libs\I2C.o
  .debug_aranges
-                0x000001e8       0x48 src\libs\Delay.o
+                0x000001f0       0x38 src\libs\GPIO.o
  .debug_aranges
-                0x00000230       0x40 src\libs\BMP180.o
+                0x00000228       0x48 src\libs\Delay.o
  .debug_aranges
                 0x00000270      0x100 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.o
  .debug_aranges
@@ -2081,73 +2091,73 @@ OUTPUT(test.elf elf32-littlearm)
  .debug_ranges  0x00000000       0x28 src\system_stm32f10x.o
  .debug_ranges  0x00000028       0x50 src\stm32f1xx_it.o
  .debug_ranges  0x00000078       0x20 src\startup_stm32f10x_md.o
- .debug_ranges  0x00000098       0x20 src\main.o
- .debug_ranges  0x000000b8       0x28 src\libs\USART1.o
- .debug_ranges  0x000000e0       0x40 src\libs\L3G4200D.o
- .debug_ranges  0x00000120       0x28 src\libs\I2C.o
- .debug_ranges  0x00000148       0x28 src\libs\GPIO.o
- .debug_ranges  0x00000170       0x38 src\libs\Delay.o
- .debug_ranges  0x000001a8       0x30 src\libs\BMP180.o
+ .debug_ranges  0x00000098       0x40 src\sensors\L3G4200D.o
+ .debug_ranges  0x000000d8       0x30 src\sensors\BMP180.o
+ .debug_ranges  0x00000108       0x20 src\main.o
+ .debug_ranges  0x00000128       0x28 src\libs\USART1.o
+ .debug_ranges  0x00000150       0x28 src\libs\I2C.o
+ .debug_ranges  0x00000178       0x28 src\libs\GPIO.o
+ .debug_ranges  0x000001a0       0x38 src\libs\Delay.o
  .debug_ranges  0x000001d8       0xf0 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.o
  .debug_ranges  0x000002c8      0x108 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.o
  .debug_ranges  0x000003d0      0x110 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
  .debug_ranges  0x000004e0       0x98 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_gpio.o
 
-.debug_line     0x00000000     0x271c
+.debug_line     0x00000000     0x2738
  .debug_line    0x00000000      0x21c src\system_stm32f10x.o
  .debug_line    0x0000021c      0x1e3 src\stm32f1xx_it.o
  .debug_line    0x000003ff       0x7c src\startup_stm32f10x_md.o
- .debug_line    0x0000047b      0x252 src\main.o
- .debug_line    0x000006cd      0x2c1 src\libs\USART1.o
- .debug_line    0x0000098e      0x227 src\libs\L3G4200D.o
- .debug_line    0x00000bb5      0x320 src\libs\I2C.o
- .debug_line    0x00000ed5      0x22b src\libs\GPIO.o
- .debug_line    0x00001100      0x214 src\libs\Delay.o
- .debug_line    0x00001314      0x25f src\libs\BMP180.o
- .debug_line    0x00001573      0x48d Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.o
- .debug_line    0x00001a00      0x4b0 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.o
- .debug_line    0x00001eb0      0x4ca Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
- .debug_line    0x0000237a      0x3a2 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_gpio.o
+ .debug_line    0x0000047b      0x236 src\sensors\L3G4200D.o
+ .debug_line    0x000006b1      0x26e src\sensors\BMP180.o
+ .debug_line    0x0000091f      0x250 src\main.o
+ .debug_line    0x00000b6f      0x2c1 src\libs\USART1.o
+ .debug_line    0x00000e30      0x320 src\libs\I2C.o
+ .debug_line    0x00001150      0x22b src\libs\GPIO.o
+ .debug_line    0x0000137b      0x214 src\libs\Delay.o
+ .debug_line    0x0000158f      0x48d Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.o
+ .debug_line    0x00001a1c      0x4b0 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.o
+ .debug_line    0x00001ecc      0x4ca Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
+ .debug_line    0x00002396      0x3a2 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_gpio.o
 
-.debug_str      0x00000000     0x1c59
- .debug_str     0x00000000      0x2c5 src\system_stm32f10x.o
-                                0x334 (size before relaxing)
- .debug_str     0x000002c5       0xa6 src\stm32f1xx_it.o
-                                0x239 (size before relaxing)
- .debug_str     0x0000036b      0x4df src\main.o
-                                0x69d (size before relaxing)
- .debug_str     0x0000084a      0x1d0 src\libs\USART1.o
-                                0x4c0 (size before relaxing)
- .debug_str     0x00000a1a       0x4a src\libs\L3G4200D.o
+.debug_str      0x00000000     0x1c74
+ .debug_str     0x00000000      0x2c2 src\system_stm32f10x.o
+                                0x331 (size before relaxing)
+ .debug_str     0x000002c2       0xa6 src\stm32f1xx_it.o
+                                0x236 (size before relaxing)
+ .debug_str     0x00000368      0x2c2 src\sensors\L3G4200D.o
                                 0x3ff (size before relaxing)
- .debug_str     0x00000a64       0xeb src\libs\I2C.o
-                                0x53b (size before relaxing)
- .debug_str     0x00000b4f       0x43 src\libs\GPIO.o
-                                0x40f (size before relaxing)
- .debug_str     0x00000b92      0x39d src\libs\Delay.o
-                                0x5fb (size before relaxing)
- .debug_str     0x00000f2f       0x55 src\libs\BMP180.o
+ .debug_str     0x0000062a      0x16d src\sensors\BMP180.o
                                 0x4af (size before relaxing)
- .debug_str     0x00000f84      0x3d3 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.o
-                                0x6f9 (size before relaxing)
- .debug_str     0x00001357      0x366 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.o
-                                0x683 (size before relaxing)
- .debug_str     0x000016bd      0x342 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
-                                0x6cf (size before relaxing)
- .debug_str     0x000019ff      0x25a Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_gpio.o
-                                0x582 (size before relaxing)
+ .debug_str     0x00000797      0x16d src\main.o
+                                0x6b2 (size before relaxing)
+ .debug_str     0x00000904      0x1d0 src\libs\USART1.o
+                                0x4bd (size before relaxing)
+ .debug_str     0x00000ad4       0xeb src\libs\I2C.o
+                                0x538 (size before relaxing)
+ .debug_str     0x00000bbf       0x43 src\libs\GPIO.o
+                                0x40c (size before relaxing)
+ .debug_str     0x00000c02      0x39d src\libs\Delay.o
+                                0x5f8 (size before relaxing)
+ .debug_str     0x00000f9f      0x3d3 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.o
+                                0x6f6 (size before relaxing)
+ .debug_str     0x00001372      0x366 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.o
+                                0x680 (size before relaxing)
+ .debug_str     0x000016d8      0x342 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
+                                0x6cc (size before relaxing)
+ .debug_str     0x00001a1a      0x25a Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_gpio.o
+                                0x57f (size before relaxing)
 
 .comment        0x00000000       0x82
  .comment       0x00000000       0x82 src\system_stm32f10x.o
                                  0x83 (size before relaxing)
  .comment       0x00000000       0x83 src\stm32f1xx_it.o
+ .comment       0x00000000       0x83 src\sensors\L3G4200D.o
+ .comment       0x00000000       0x83 src\sensors\BMP180.o
  .comment       0x00000000       0x83 src\main.o
  .comment       0x00000000       0x83 src\libs\USART1.o
- .comment       0x00000000       0x83 src\libs\L3G4200D.o
  .comment       0x00000000       0x83 src\libs\I2C.o
  .comment       0x00000000       0x83 src\libs\GPIO.o
  .comment       0x00000000       0x83 src\libs\Delay.o
- .comment       0x00000000       0x83 src\libs\BMP180.o
  .comment       0x00000000       0x83 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.o
  .comment       0x00000000       0x83 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.o
  .comment       0x00000000       0x83 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
@@ -2156,13 +2166,13 @@ OUTPUT(test.elf elf32-littlearm)
 .debug_frame    0x00000000     0x1298
  .debug_frame   0x00000000       0x80 src\system_stm32f10x.o
  .debug_frame   0x00000080       0xec src\stm32f1xx_it.o
- .debug_frame   0x0000016c       0x6c src\main.o
- .debug_frame   0x000001d8       0x98 src\libs\USART1.o
- .debug_frame   0x00000270       0xec src\libs\L3G4200D.o
- .debug_frame   0x0000035c       0x90 src\libs\I2C.o
- .debug_frame   0x000003ec       0x90 src\libs\GPIO.o
- .debug_frame   0x0000047c       0xb8 src\libs\Delay.o
- .debug_frame   0x00000534       0xa8 src\libs\BMP180.o
+ .debug_frame   0x0000016c       0xec src\sensors\L3G4200D.o
+ .debug_frame   0x00000258       0xa8 src\sensors\BMP180.o
+ .debug_frame   0x00000300       0x6c src\main.o
+ .debug_frame   0x0000036c       0x98 src\libs\USART1.o
+ .debug_frame   0x00000404       0x90 src\libs\I2C.o
+ .debug_frame   0x00000494       0x90 src\libs\GPIO.o
+ .debug_frame   0x00000524       0xb8 src\libs\Delay.o
  .debug_frame   0x000005dc      0x344 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.o
  .debug_frame   0x00000920      0x388 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.o
  .debug_frame   0x00000ca8      0x3b4 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
@@ -2222,14 +2232,14 @@ BKP_SetRTCCalibrationValue                        Libraries\STM32F10x_StdPeriph_
 BKP_TamperPinCmd                                  Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_bkp.o
 BKP_TamperPinLevelConfig                          Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_bkp.o
 BKP_WriteBackupRegister                           Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_bkp.o
-BMP180::BMP180(I2C*, short)                       src\libs\BMP180.o
+BMP180::BMP180(I2C*, short)                       src\sensors\BMP180.o
+BMP180::BMP180(I2C*, short)                       src\sensors\BMP180.o
                                                   src\main.o
-BMP180::BMP180(I2C*, short)                       src\libs\BMP180.o
-BMP180::debug()                                   src\libs\BMP180.o
-BMP180::getDelay()                                src\libs\BMP180.o
-BMP180::getPressure(long&)                        src\libs\BMP180.o
+BMP180::debug()                                   src\sensors\BMP180.o
+BMP180::getDelay()                                src\sensors\BMP180.o
+BMP180::getPressure(long&)                        src\sensors\BMP180.o
                                                   src\main.o
-BMP180::init()                                    src\libs\BMP180.o
+BMP180::init()                                    src\sensors\BMP180.o
                                                   src\main.o
 BusFault_Handler                                  src\stm32f1xx_it.o
 CAN1_RX1_IRQHandler                               src\startup_stm32f10x_md.o
@@ -2380,9 +2390,7 @@ GPIO::GPIO(GPIO_TypeDef*, unsigned char, GPIOMode_TypeDef) src\libs\GPIO.o
 GPIO::GPIO(GPIO_TypeDef*, unsigned char, GPIOMode_TypeDef) src\libs\GPIO.o
                                                   src\main.o
 GPIO::high()                                      src\libs\GPIO.o
-                                                  src\main.o
 GPIO::low()                                       src\libs\GPIO.o
-                                                  src\main.o
 GPIO::read()                                      src\libs\GPIO.o
 GPIO_AFIODeInit                                   Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_gpio.o
 GPIO_DeInit                                       Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_gpio.o
@@ -2418,11 +2426,11 @@ I2C::I2C(I2C_TypeDef*, unsigned int)              src\libs\I2C.o
 I2C::I2C(I2C_TypeDef*, unsigned int)              src\libs\I2C.o
 I2C::readByte(unsigned char, unsigned char, unsigned char&) src\libs\I2C.o
 I2C::readBytes(unsigned char, unsigned char, int, unsigned char*) src\libs\I2C.o
-                                                  src\libs\BMP180.o
-                                                  src\libs\L3G4200D.o
+                                                  src\sensors\BMP180.o
+                                                  src\sensors\L3G4200D.o
 I2C::sendByte(unsigned char, unsigned char, unsigned char) src\libs\I2C.o
-                                                  src\libs\BMP180.o
-                                                  src\libs\L3G4200D.o
+                                                  src\sensors\BMP180.o
+                                                  src\sensors\L3G4200D.o
 I2C_ARPCmd                                        Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
 I2C_AcknowledgeConfig                             Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.o
                                                   src\libs\I2C.o
@@ -2476,17 +2484,17 @@ IWDG_ReloadCounter                                Libraries\STM32F10x_StdPeriph_
 IWDG_SetPrescaler                                 Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_iwdg.o
 IWDG_SetReload                                    Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_iwdg.o
 IWDG_WriteAccessCmd                               Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_iwdg.o
-L3G4200D::L3G4200D(I2C*)                          src\libs\L3G4200D.o
+L3G4200D::L3G4200D(I2C*)                          src\sensors\L3G4200D.o
+L3G4200D::L3G4200D(I2C*)                          src\sensors\L3G4200D.o
                                                   src\main.o
-L3G4200D::L3G4200D(I2C*)                          src\libs\L3G4200D.o
-L3G4200D::getBits(unsigned char, int, unsigned char*) src\libs\L3G4200D.o
-L3G4200D::init()                                  src\libs\L3G4200D.o
+L3G4200D::getBits(unsigned char, int, unsigned char*) src\sensors\L3G4200D.o
+L3G4200D::init()                                  src\sensors\L3G4200D.o
                                                   src\main.o
-L3G4200D::readAngle(short&, short&, short&)       src\libs\L3G4200D.o
+L3G4200D::readAngle(short&, short&, short&)       src\sensors\L3G4200D.o
                                                   src\main.o
-L3G4200D::readRaw(short&, short&, short&)         src\libs\L3G4200D.o
-L3G4200D::readRaw(short*)                         src\libs\L3G4200D.o
-L3G4200D::sendBit(unsigned char, unsigned char)   src\libs\L3G4200D.o
+L3G4200D::readRaw(short&, short&, short&)         src\sensors\L3G4200D.o
+L3G4200D::readRaw(short*)                         src\sensors\L3G4200D.o
+L3G4200D::sendBit(unsigned char, unsigned char)   src\sensors\L3G4200D.o
 MemManage_Handler                                 src\stm32f1xx_it.o
 NMI_Handler                                       src\stm32f1xx_it.o
 NVIC_Init                                         Libraries\STM32F10x_StdPeriph_Driver\src\misc.o
@@ -2559,8 +2567,8 @@ RCC_RTCCLKConfig                                  Libraries\STM32F10x_StdPeriph_
 RCC_SYSCLKConfig                                  Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.o
 RCC_USBCLKConfig                                  Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.o
 RCC_WaitForHSEStartUp                             Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.o
-READ_PRESS                                        src\libs\BMP180.o
-READ_TEMP                                         src\libs\BMP180.o
+READ_PRESS                                        src\sensors\BMP180.o
+READ_TEMP                                         src\sensors\BMP180.o
 RTCAlarm_IRQHandler                               src\startup_stm32f10x_md.o
 RTC_ClearFlag                                     Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rtc.o
 RTC_ClearITPendingBit                             Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rtc.o
@@ -2608,8 +2616,8 @@ SDIO_StartSDIOReadWait                            Libraries\STM32F10x_StdPeriph_
 SDIO_StopSDIOReadWait                             Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_sdio.o
 SDIO_StructInit                                   Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_sdio.o
 SDIO_WriteData                                    Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_sdio.o
-SEND_PRESS                                        src\libs\BMP180.o
-SEND_TEMP                                         src\libs\BMP180.o
+SEND_PRESS                                        src\sensors\BMP180.o
+SEND_TEMP                                         src\sensors\BMP180.o
 SPI1_IRQHandler                                   src\startup_stm32f10x_md.o
 SPI2_IRQHandler                                   src\startup_stm32f10x_md.o
 SPI_BiDirectionalLineConfig                       Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_spi.o
@@ -2791,26 +2799,26 @@ WWDG_SetPrescaler                                 Libraries\STM32F10x_StdPeriph_
 WWDG_SetWindowValue                               Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_wwdg.o
 __adddf3                                          c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m\libgcc.a(_arm_addsubdf3.o)
 __aeabi_d2iz                                      c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m\libgcc.a(_arm_fixdfsi.o)
-                                                  src\libs\BMP180.o
-                                                  src\libs\L3G4200D.o
+                                                  src\sensors\BMP180.o
+                                                  src\sensors\L3G4200D.o
 __aeabi_d2uiz                                     c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m\libgcc.a(_arm_fixunsdfsi.o)
-                                                  src\libs\BMP180.o
+                                                  src\sensors\BMP180.o
 __aeabi_dadd                                      c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m\libgcc.a(_arm_addsubdf3.o)
-                                                  src\libs\BMP180.o
+                                                  src\sensors\BMP180.o
 __aeabi_ddiv                                      c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m\libgcc.a(_arm_muldivdf3.o)
-                                                  src\libs\BMP180.o
-                                                  src\libs\L3G4200D.o
+                                                  src\sensors\BMP180.o
+                                                  src\sensors\L3G4200D.o
 __aeabi_dmul                                      c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m\libgcc.a(_arm_muldivdf3.o)
-                                                  src\libs\BMP180.o
+                                                  src\sensors\BMP180.o
 __aeabi_drsub                                     c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m\libgcc.a(_arm_addsubdf3.o)
 __aeabi_dsub                                      c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m\libgcc.a(_arm_addsubdf3.o)
 __aeabi_f2d                                       c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m\libgcc.a(_arm_addsubdf3.o)
 __aeabi_i2d                                       c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m\libgcc.a(_arm_addsubdf3.o)
-                                                  src\libs\BMP180.o
-                                                  src\libs\L3G4200D.o
+                                                  src\sensors\BMP180.o
+                                                  src\sensors\L3G4200D.o
 __aeabi_l2d                                       c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m\libgcc.a(_arm_addsubdf3.o)
 __aeabi_ui2d                                      c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m\libgcc.a(_arm_addsubdf3.o)
-                                                  src\libs\BMP180.o
+                                                  src\sensors\BMP180.o
 __aeabi_ul2d                                      c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m\libgcc.a(_arm_addsubdf3.o)
 __deregister_frame_info                           c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m/crtbegin.o
 __divdf3                                          c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/armv7-m\libgcc.a(_arm_muldivdf3.o)
@@ -2905,9 +2913,10 @@ _wait                                             c:/program files (x86)/atollic
 _write                                            c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/../../../../arm-atollic-eabi/lib/armv7-m\libc_s.a(lib_a-syscalls.o)
                                                   src\tiny_printf.o
 bmp                                               src\main.o
+button                                            src\main.o
+buzzer                                            src\main.o
 cleanup_glue                                      c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/../../../../arm-atollic-eabi/lib/armv7-m\libc_s.a(lib_a-reent.o)
 delay                                             src\libs\Delay.o
-                                                  src\main.o
 end                                               c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/../../../../arm-atollic-eabi/lib/armv7-m\libc_s.a(lib_a-syscalls.o)
 environ                                           c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/../../../../arm-atollic-eabi/lib/armv7-m\libc_s.a(lib_a-syscalls.o)
 errno                                             c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/../../../../arm-atollic-eabi/lib/armv7-m\libc_s.a(lib_a-reent.o)
@@ -2930,7 +2939,8 @@ initUSART1                                        src\libs\USART1.o
                                                   src\main.o
 initialise_monitor_handles                        c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/../../../../arm-atollic-eabi/lib/armv7-m\libc_s.a(lib_a-syscalls.o)
 iprintf                                           src\tiny_printf.o
-led                                               src\main.o
+ledB                                              src\main.o
+ledR                                              src\main.o
 main                                              src\main.o
                                                   src\startup_stm32f10x_md.o
 malloc                                            c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/../../../../arm-atollic-eabi/lib/armv7-m\libc_s.a(lib_a-malloc.o)
@@ -2943,7 +2953,7 @@ memcpy                                            c:/program files (x86)/atollic
 memmove                                           c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/../../../../arm-atollic-eabi/lib/armv7-m\libc_s.a(lib_a-memmove.o)
                                                   c:/program files (x86)/atollic/truestudio for arm 5.4.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.8.3/../../../../arm-atollic-eabi/lib/armv7-m\libc_s.a(lib_a-svfprintf.o)
 millis                                            src\libs\Delay.o
-                                                  src\libs\BMP180.o
+                                                  src\sensors\BMP180.o
 printf                                            src\tiny_printf.o
 printf2                                           src\libs\USART1.o
                                                   src\tiny_printf.o

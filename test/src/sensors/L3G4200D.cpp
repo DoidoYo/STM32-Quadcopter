@@ -6,7 +6,7 @@
  */
 
 
-#include "libs/L3G4200D.h"
+#include "L3G4200D.h"
 
 L3G4200D::L3G4200D(I2C *i2c) {
 	I2Cx = i2c;
