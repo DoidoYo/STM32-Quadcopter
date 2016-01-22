@@ -7,14 +7,11 @@
 
 #include "BMP180.h"
 
-BMP180::BMP180(){}
+BMP180::BMP180() {}
 
-BMP180::BMP180(I2C *i2c, short _mode) {
+void BMP180::init(I2C *i2c, short _mode) {
 	I2Cx = i2c;
-	mode = _mode;
-}
-
-void BMP180::init() {
+		mode = _mode;
 	step = SEND_TEMP;
 
 	uint8_t data[2];

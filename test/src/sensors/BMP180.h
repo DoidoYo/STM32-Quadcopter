@@ -25,8 +25,7 @@ class BMP180 {
 
 public:
 	BMP180();
-	BMP180(I2C *i2c, short _mode);
-	void init();
+	void init(I2C *i2c, short _mode);
 	void startPressure();
 	void getPressure(long &P);
 	int getDelay();

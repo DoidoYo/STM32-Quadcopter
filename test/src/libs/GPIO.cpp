@@ -10,32 +10,30 @@
 
 GPIO::GPIO() {}
 
-GPIO::GPIO(GPIO_TypeDef* gpio, uint16_t pin, GPIOMode_TypeDef mode) {
-
+void GPIO::init(GPIO_TypeDef* gpio, uint16_t pin, GPIOMode_TypeDef mode) {
 	_gpio = gpio;
-	_pin = pin;
-	_mode = mode;
+		_pin = pin;
+		_mode = mode;
 
-	if(_gpio == GPIOA) {
-		RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
-	} else if (_gpio == GPIOB) {
-		RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
-	} else if (_gpio == GPIOC) {
-		RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
-	} else if (_gpio == GPIOD) {
-		RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD, ENABLE);
-	} else if (_gpio == GPIOE) {
-		RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOE, ENABLE);
-	} else if (_gpio == GPIOF) {
-		RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOF, ENABLE);
-	}
+		if(_gpio == GPIOA) {
+			RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+		} else if (_gpio == GPIOB) {
+			RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
+		} else if (_gpio == GPIOC) {
+			RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
+		} else if (_gpio == GPIOD) {
+			RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD, ENABLE);
+		} else if (_gpio == GPIOE) {
+			RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOE, ENABLE);
+		} else if (_gpio == GPIOF) {
+			RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOF, ENABLE);
+		}
 
-	GPIO_InitTypeDef init;
-	init.GPIO_Mode = _mode;
-	init.GPIO_Pin = _pin;
-	init.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_Init(_gpio, &init);
-
+		GPIO_InitTypeDef init;
+		init.GPIO_Mode = _mode;
+		init.GPIO_Pin = _pin;
+		init.GPIO_Speed = GPIO_Speed_50MHz;
+		GPIO_Init(_gpio, &init);
 }
 
 void GPIO::high() {

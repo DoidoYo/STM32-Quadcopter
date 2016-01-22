@@ -13,7 +13,7 @@
 class I2C {
 public:
 	I2C();
-	I2C(I2C_TypeDef *i2c, unsigned int speed);
+	void init(I2C_TypeDef *i2c, unsigned int speed);
 	void sendByte(uint8_t address, uint8_t reg, uint8_t data);
 	void readBytes(uint8_t address, uint8_t reg, int bytes, uint8_t* data);
 	void readByte(uint8_t addr, uint8_t reg, uint8_t &data);

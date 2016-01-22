@@ -7,18 +7,15 @@
 
 #include "L3G4200D.h"
 
-L3G4200D::L3G4200D(){}
-
-L3G4200D::L3G4200D(I2C *i2c) {
-	I2Cx = i2c;
-}
+L3G4200D::L3G4200D() {}
 
 void readGyroTask() {
 	//gyro.readRaw(raw.x, raw.y, raw.z);
 	//readAngle(angle.x,angle.y,angle.z);
 }
 
-void L3G4200D::init() {
+void L3G4200D::init(I2C *i2c) {
+	I2Cx = i2c;
 	sendBit(L3G4200D_CTRL_REG1, L3G4200D_CTRL_REG1_ON);
 	sendBit(L3G4200D_CTRL_REG4,
 	L3G4200D_CTRL_REG4_CONST_UPDATE | L3G4200D_CTRL_REG4_SCALE_500);

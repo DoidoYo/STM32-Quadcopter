@@ -12,18 +12,18 @@
 
 #define TASK_SIZE 100
 
-typedef void (*FunctionPointer)();
+typedef void (*Function)();
 
 class TaskManager {
 
 public:
 
-	static void addTask(FunctionPointer, int);
+	static void addTask(Function, int);
 	static void run();
 
 private:
 	static int counter;
-	static FunctionPointer _function[TASK_SIZE];
+	static Function _function[TASK_SIZE];
 	static uint32_t _hz[TASK_SIZE];
 	static uint32_t _timer[TASK_SIZE];
 

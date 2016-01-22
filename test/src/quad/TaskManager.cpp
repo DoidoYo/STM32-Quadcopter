@@ -11,9 +11,9 @@
 int TaskManager::counter = 0;
 uint32_t TaskManager::_hz[TASK_SIZE] = {};
 uint32_t TaskManager::_timer[TASK_SIZE] = {};
-FunctionPointer TaskManager::_function[TASK_SIZE] = {};
+Function TaskManager::_function[TASK_SIZE] = {};
 
-void TaskManager::addTask(FunctionPointer function, int hz) {
+void TaskManager::addTask(Function function, int hz) {
 	_function[counter] = function;
 	_hz[counter] = (1000/hz);
 	counter++;

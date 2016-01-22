@@ -7,42 +7,41 @@
 
 #include "I2C.h"
 
-I2C::I2C(){}
+I2C::I2C() {}
 
-I2C::I2C(I2C_TypeDef *i2c, unsigned int speed) {
+void I2C::init(I2C_TypeDef *i2c, unsigned int speed) {
 	I2Cx = i2c;
 
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
+		RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
 
-	GPIO_InitTypeDef gpioInit;
-	I2C_InitTypeDef i2cInit;
+		GPIO_InitTypeDef gpioInit;
+		I2C_InitTypeDef i2cInit;
 
-	if (I2Cx == I2C1) {
-		RCC_APB1PeriphClockCmd(RCC_APB1Periph_I2C1, ENABLE);
+		if (I2Cx == I2C1) {
+			RCC_APB1PeriphClockCmd(RCC_APB1Periph_I2C1, ENABLE);
 
-		gpioInit.GPIO_Pin = GPIO_Pin_6 | GPIO_Pin_7;
-		gpioInit.GPIO_Mode = GPIO_Mode_AF_OD;
-		gpioInit.GPIO_Speed = GPIO_Speed_50MHz;
-		GPIO_Init(GPIOB, &gpioInit);
-	} else if (I2Cx == I2C2) {
-		RCC_APB1PeriphClockCmd(RCC_APB1Periph_I2C2, ENABLE);
+			gpioInit.GPIO_Pin = GPIO_Pin_6 | GPIO_Pin_7;
+			gpioInit.GPIO_Mode = GPIO_Mode_AF_OD;
+			gpioInit.GPIO_Speed = GPIO_Speed_50MHz;
+			GPIO_Init(GPIOB, &gpioInit);
+		} else if (I2Cx == I2C2) {
+			RCC_APB1PeriphClockCmd(RCC_APB1Periph_I2C2, ENABLE);
 
-		gpioInit.GPIO_Pin = GPIO_Pin_10 | GPIO_Pin_11;
-		gpioInit.GPIO_Mode = GPIO_Mode_AF_OD;
-		gpioInit.GPIO_Speed = GPIO_Speed_50MHz;
-		GPIO_Init(GPIOB, &gpioInit);
-	}
+			gpioInit.GPIO_Pin = GPIO_Pin_10 | GPIO_Pin_11;
+			gpioInit.GPIO_Mode = GPIO_Mode_AF_OD;
+			gpioInit.GPIO_Speed = GPIO_Speed_50MHz;
+			GPIO_Init(GPIOB, &gpioInit);
+		}
 
-	//configure I2C
-	i2cInit.I2C_Mode = I2C_Mode_I2C;
-	i2cInit.I2C_DutyCycle = I2C_DutyCycle_16_9;
-	i2cInit.I2C_OwnAddress1 = 0x00;
-	i2cInit.I2C_Ack = I2C_Ack_Enable;
-	i2cInit.I2C_ClockSpeed = speed;
-	I2C_Init(I2Cx, &i2cInit);
-	//enable I2C
-	I2C_Cmd(I2Cx, ENABLE);
-
+		//configure I2C
+		i2cInit.I2C_Mode = I2C_Mode_I2C;
+		i2cInit.I2C_DutyCycle = I2C_DutyCycle_16_9;
+		i2cInit.I2C_OwnAddress1 = 0x00;
+		i2cInit.I2C_Ack = I2C_Ack_Enable;
+		i2cInit.I2C_ClockSpeed = speed;
+		I2C_Init(I2Cx, &i2cInit);
+		//enable I2C
+		I2C_Cmd(I2Cx, ENABLE);
 }
 
 void I2C::sendByte(uint8_t address, uint8_t reg, uint8_t data) {

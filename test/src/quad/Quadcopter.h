@@ -28,7 +28,6 @@
 #define BUZZER_PIN GPIO_Pin_5
 #define BUZZER_PORT GPIOB
 
-
 extern I2C i2c;
 
 extern BMP180 baro;
@@ -40,15 +39,15 @@ extern GPIO LED_SYS;
 extern GPIO BUZZER;
 extern GPIO BUTTON;
 
-
 extern vector angleRaw, angleScaled;
 extern vector accelRaw, accelScaled;
 extern vector headingRaw, headingScaled;
 extern long pressure;
 
- void TASK_readGyro();
- void TASK_readBaro();
- void TASK_readAccel();
- void TASK_readMag();
+void TASK_readGyro();
+void TASK_readBaro();
+void TASK_readAccel();
+void TASK_readMag();
+void TASK_computeIMU();
 
 #endif /* QUADCOPTER_H_ */

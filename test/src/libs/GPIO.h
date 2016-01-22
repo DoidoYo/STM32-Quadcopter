@@ -14,7 +14,7 @@ class GPIO {
 
 public:
 	GPIO();
-	GPIO(GPIO_TypeDef* gpio, uint16_t pin, GPIOMode_TypeDef mode);
+	void init(GPIO_TypeDef* gpio, uint16_t pin, GPIOMode_TypeDef mode);
 	void high();
 	void low();
 	int read();
