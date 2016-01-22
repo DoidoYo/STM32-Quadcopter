@@ -5,15 +5,9 @@
  *      Author: Gabriel Fernandes
  */
 
-#include "stm32f10x.h"
 #include "core.h"
 #include "libs/I2C.h"
 #include "math.h"
-
-
-/*extern "C" {
-#include "Delay.h"
-}*/
 
 #define BMP180_ADDR 0x77 // 7-bit address
 
@@ -30,12 +24,17 @@
 class BMP180 {
 
 public:
+	BMP180();
 	BMP180(I2C *i2c, short _mode);
 	void init();
 	void startPressure();
 	void getPressure(long &P);
 	int getDelay();
 	void debug();
+
+	//void readPressureTask();
+	//long Pressure;
+
 
 private:
 	I2C *I2Cx;
@@ -52,5 +51,7 @@ private:
 
 	//double c5,c6,mc,md,x0,x1,x2,y0,y1,y2,p0,p1,p2, T;
 	int delay;
+
+	int SEND_TEMP, READ_TEMP, SEND_PRESS, READ_PRESS;
 
 };

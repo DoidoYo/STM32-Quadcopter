@@ -13,14 +13,13 @@
 #ifdef __cplusplus
 
 #include "libs/GPIO.h"
+//#include "quad/Quadcopter.h"
 
 extern "C" {
 #endif
 
 #include "libs/Delay.h"
 #include "libs/USART1.h"
-
-#include "settings.h"
 
 #ifdef __cplusplus
 }

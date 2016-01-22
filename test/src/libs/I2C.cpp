@@ -7,6 +7,8 @@
 
 #include "I2C.h"
 
+I2C::I2C(){}
+
 I2C::I2C(I2C_TypeDef *i2c, unsigned int speed) {
 	I2Cx = i2c;
 

@@ -7,11 +7,10 @@
 
 #include "BMP180.h"
 
-int SEND_TEMP =0, READ_TEMP=1, SEND_PRESS=2, READ_PRESS=3;
+BMP180::BMP180(){}
 
 BMP180::BMP180(I2C *i2c, short _mode) {
 	I2Cx = i2c;
-
 	mode = _mode;
 }
 
@@ -52,6 +51,10 @@ void BMP180::init() {
 	I2Cx->readBytes(BMP180_ADDR, 0xBE, 2, data);
 	MD =  (data[0] << 8) | data[1];
 
+	SEND_TEMP =0;
+	READ_TEMP=1;
+	SEND_PRESS=2;
+	READ_PRESS=3;
 }
 
 int BMP180::getDelay() {

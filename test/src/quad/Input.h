@@ -8,16 +8,6 @@
 #ifndef INPUT_H_
 #define INPUT_H_
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-
-
-
-#ifdef __cplusplus
-} // extern "C"
-#endif
-
+#include "quad/Quadcopter.h"
 
 #endif /* INPUT_H_ */

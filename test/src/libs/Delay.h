@@ -16,21 +16,3 @@
  void incrementMillis();
 
 #endif /* DELAY_H_ */
-
- /*void initMillis() {
-	SysTick_Config(SystemCoreClock / 1000);
-}
-
-uint32_t millis() {
-	return _millisCounter;
-}
-
-void delay(int DelayTime) {
-	uint32_t delayTimer = 0;
-	delayTimer = millis();
-	while ((millis() - delayTimer) < (uint32_t) DelayTime);
-}
-
-void incrementMillis() {
-	_millisCounter++;
-}*/

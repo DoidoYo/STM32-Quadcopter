@@ -35,15 +35,23 @@
 #define L3G4200D_OUT_Z_L       0x2C
 #define L3G4200D_OUT_Z_H       0x2D
 
+struct vector{
+			int16_t x,y,z;
+		};
+
+	void readGyroTask();
+
 class L3G4200D {
 
 public:
+	L3G4200D();
 	L3G4200D(I2C *i2c);
 	void init();
 	void readRaw(int16_t &x, int16_t &y, int16_t &z);
 	//void readRaw(float &x, float &y, float &z);
-	void readRaw(int16_t *data);
+	void readRaw(vector &data);
 	void readAngle(int16_t &x, int16_t &y, int16_t &z);
+	void readAngle(vector &raw,vector &angle);
 	//void readAngle(vector *v);
 
 private:

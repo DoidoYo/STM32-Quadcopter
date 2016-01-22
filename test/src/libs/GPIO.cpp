@@ -8,7 +8,9 @@
 
 #include "GPIO.h"
 
-GPIO::GPIO(GPIO_TypeDef* gpio, uint8_t pin, GPIOMode_TypeDef mode) {
+GPIO::GPIO() {}
+
+GPIO::GPIO(GPIO_TypeDef* gpio, uint16_t pin, GPIOMode_TypeDef mode) {
 
 	_gpio = gpio;
 	_pin = pin;

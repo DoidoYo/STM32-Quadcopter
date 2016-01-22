@@ -13,14 +13,15 @@
 class GPIO {
 
 public:
-	GPIO(GPIO_TypeDef* gpio, uint8_t pin, GPIOMode_TypeDef mode);
+	GPIO();
+	GPIO(GPIO_TypeDef* gpio, uint16_t pin, GPIOMode_TypeDef mode);
 	void high();
 	void low();
 	int read();
 
 private:
 	GPIO_TypeDef* _gpio;
-	uint8_t _pin;
+	uint16_t _pin;
 	GPIOMode_TypeDef _mode;
 };
 
