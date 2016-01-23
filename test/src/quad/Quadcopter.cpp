@@ -36,9 +36,9 @@ void initQuad() {
 
 	//init tasks
 	TaskManager::addTask(&TASK_readGyro, 150);
-	TaskManager::addTask(&TASK_readBaro, 50 * (4));
+	//TaskManager::addTask(&TASK_readBaro, 50 * (4));
 
-	TaskManager::addTask(&TASK_flightController, 150);
+	TaskManager::addTask(&TASK_flightController, 200);
 	TaskManager::addTask(&TASK_receiverCheck, 55); //rc only updates at 55hz
 	TaskManager::addTask(&TASK_stickReader, 20);
 
@@ -58,9 +58,6 @@ void initQuad() {
 
 	baro.init(&i2c, 2);
 	gyro.init(&i2c);
-	LED_R.high();
-	 gyro.calibrate();
-	 LED_R.low();
 
 	ratePID[ROLL].init(ROLL_KP, ROLL_KI, ROLL_KD, ROLL_MAX);
 	ratePID[PITCH].init(PITCH_KP, PITCH_KI, PITCH_KD, PITCH_MAX);
@@ -84,6 +81,12 @@ void initQuad() {
 		LED_G.low();
 		LED_R.low();
 	}
+
+	delayMs(1000);
+
+	LED_R.high();
+	gyro.calibrate();
+	LED_R.low();
 
 }
 

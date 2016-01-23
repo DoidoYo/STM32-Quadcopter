@@ -27,13 +27,13 @@ void TaskManager::run() {
 
 	for(int i=0;i<counter;i++) {
 
-		uint32_t time = millis();
-		if((time - _timer[i]) >= _hz[i]) {
+		uint32_t time = micros();
+		if((time - _timer[i]) >= (_hz[i]*1000)) {
 
 			//printf2("inside");
 
 			(*_function[i])();
-			_timer[i] = time;
+			_timer[i] = micros();
 		}
 
 	}

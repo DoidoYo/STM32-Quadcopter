@@ -25,9 +25,9 @@
 /////      STICK SCALING     //////////
 //////////////////////////////////////
 
-#define RATE_ROLL_SCALE  60
-#define RATE_PITCH_SCALE 60
-#define RATE_YAW_SCALE   100
+#define RATE_ROLL_SCALE  120
+#define RATE_PITCH_SCALE 120
+#define RATE_YAW_SCALE   120
 
 ////////////////////////////
 #define BUTTON_PIN GPIO_Pin_0
@@ -65,7 +65,7 @@
 ///////////////////////////////
 
 #define MOTOR_MIN 1000
-#define MOTOR_MAX 1900
+#define MOTOR_MAX 2000
 
 #define ARMED 1
 #define UNARMED 0

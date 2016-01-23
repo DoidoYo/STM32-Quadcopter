@@ -43,6 +43,7 @@ void initMotors() {
 	GPIO_Init(GPIOA, &init);
 
 	/////////////////////
+	TIM_TimeBaseStructInit(&time);
 	time.TIM_Period = 4000 - 1;
 	time.TIM_Prescaler = (uint16_t) (SystemCoreClock / 1000000) - 1;
 	time.TIM_ClockDivision = 0;
@@ -50,37 +51,38 @@ void initMotors() {
 	TIM_TimeBaseInit(TIM2, &time);
 	TIM_TimeBaseInit(TIM3, &time);
 
+	TIM_CtrlPWMOutputs(TIM2, ENABLE);
+	TIM_CtrlPWMOutputs(TIM3, ENABLE);
+
 	TIM_Cmd(TIM2, ENABLE);
 	TIM_Cmd(TIM3, ENABLE);
 
 	TIM_OCInitTypeDef pwm;
+	TIM_OCStructInit(&pwm);
 	pwm.TIM_OCMode = TIM_OCMode_PWM1;
 	pwm.TIM_OutputState = TIM_OutputState_Enable;
 	pwm.TIM_OCPolarity = TIM_OCPolarity_High;
-
 	pwm.TIM_Pulse = 1000;
+
 	TIM_OC3Init(TIM3, &pwm);
-
-	pwm.TIM_Pulse = 1000;
 	TIM_OC2Init(TIM3, &pwm);
-
-	pwm.TIM_Pulse = 1000;
 	TIM_OC1Init(TIM3, &pwm);
-
-	pwm.TIM_Pulse = 1000;
 	TIM_OC2Init(TIM2, &pwm);
+
+	TIM_OC1PreloadConfig(TIM3, TIM_OCPreload_Enable);
+	TIM_OC1PreloadConfig(TIM2, TIM_OCPreload_Enable);
 
 }
 
 void updateMotors() {
 
-	TIM3->CCR3 = motors[M_FR];
+	TIM3->CCR3 = motors[M_BR];
 
-	TIM3->CCR2 = motors[M_FL];
+	TIM3->CCR2 = motors[M_BL];
 
-	TIM3->CCR1 = motors[M_BL];
+	TIM3->CCR1 = motors[M_FL];
 
-	TIM2->CCR2 = motors[M_BR];
+	TIM2->CCR2 = motors[M_FR];
 
 }
 

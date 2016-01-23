@@ -7,14 +7,21 @@
 
 #include "Quadcopter.h"
 
+int c = 0;
+uint32_t tmm;
+
 void TASK_readGyro() {
 	gyro.readAngle(angleRaw, angleScaled);
 	angleRaw.z *= -1;
 	angleScaled.z *= -1;
 
-	angleSmooth.x = (angleSmooth.x * .8) + ((angleRaw.x/57.14286) * .2);
-	angleSmooth.y = (angleSmooth.y * .8) + ((angleRaw.y/57.14286) * .2);
-	angleSmooth.z = (angleSmooth.z * .8) + ((angleRaw.z/57.14286) * .2);
+	angleSmooth.x = (angleSmooth.x * .8) + ((angleRaw.x / 57.14286) * .2);
+	angleSmooth.y = (angleSmooth.y * .8) + ((angleRaw.y / 57.14286) * .2);
+	angleSmooth.z = (angleSmooth.z * .8) + ((angleRaw.z / 57.14286) * .2);
+
+	//angleSmooth.x = (angleRaw.x/57.14286);
+	//angleSmooth.y = (angleRaw.y/57.14286);
+	//angleSmooth.z = (angleRaw.z/57.14286);
 
 	//printf2("Angle x: %i \ty: %i \tz: %i \n", (int)angleSmooth.x,(int)angleSmooth.y,(int)angleSmooth.z);
 }
@@ -45,19 +52,24 @@ void TASK_flightController() {
 
 		//	printf2("Scaled input:\t %i \t %i \t %i\n\n", scaledInput[RX_ROLL], scaledInput[RX_PITCH], scaledInput[RX_YAW]);
 		/*printf2("%i \t %i \t %i \t %i \t %i \t %i \t %i \t %i \t %i\n",
-				(int) rateOut[ROLL], (int) rateOut[PITCH], (int) rateOut[YAW],
-				scaledInput[RX_ROLL], scaledInput[RX_PITCH],
-				scaledInput[RX_YAW], (int) angleRaw.x, (int) angleRaw.y,
-				(int) angleRaw.z);*/
+		 (int) rateOut[ROLL], (int) rateOut[PITCH], (int) rateOut[YAW],
+		 scaledInput[RX_ROLL], scaledInput[RX_PITCH],
+		 scaledInput[RX_YAW], (int) angleSmooth.x, (int) angleSmooth.y,
+		 (int) angleSmooth.z);*/
 
+		if(scaledInput[RX_THROTTLE] > 1800) {
+			scaledInput[RX_THROTTLE] = 1800;
+		}
 		motors[M_FR] = scaledInput[RX_THROTTLE] + rateOut[ROLL] + rateOut[PITCH]
-				+ rateOut[YAW];
+				- rateOut[YAW];
 		motors[M_FL] = scaledInput[RX_THROTTLE] - rateOut[ROLL] + rateOut[PITCH]
-				- rateOut[YAW];
-		motors[M_BL] = scaledInput[RX_THROTTLE] - rateOut[ROLL] - rateOut[PITCH]
 				+ rateOut[YAW];
-		motors[M_BR] = scaledInput[RX_THROTTLE] + rateOut[ROLL] - rateOut[PITCH]
+		motors[M_BL] = scaledInput[RX_THROTTLE] - rateOut[ROLL] - rateOut[PITCH]
 				- rateOut[YAW];
+		motors[M_BR] = scaledInput[RX_THROTTLE] + rateOut[ROLL] - rateOut[PITCH]
+				+ rateOut[YAW];
+
+		//printf2("%i \t %i \t %i \t%i \n", motors[M_FL],motors[M_BL],motors[M_FR],motors[M_BR]);
 
 		if (motors[M_FR] > MOTOR_MAX) {
 			motors[M_FR] = MOTOR_MAX;
@@ -112,6 +124,14 @@ void TASK_flightController() {
 	}
 
 	updateMotors();
+
+	/*if((millis() - tmm) > 1000) {
+	 printf2("hz: %i\n", c);
+	 c=0;
+	 tmm = millis();
+	 } else {
+	 c++;
+	 }*/
 }
 
 int map(int x, int min, int max, int nmin, int nmax, int deadmin, int deadmax) {

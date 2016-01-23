@@ -12,6 +12,7 @@
 
  void initDelay();
  void delayMs(int i);
+ void delayUs(int i);
  uint64_t millis();
  uint64_t micros();
  void incrementMicros();

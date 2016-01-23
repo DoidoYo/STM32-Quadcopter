@@ -28,6 +28,12 @@ void delayMs(int DelayTime) {
 	while ((millis() - delayTimer) < (uint32_t) DelayTime);
 }
 
+void delayUs(int DelayTime) {
+	uint64_t delayTimer = 0;
+	delayTimer = micros();
+	while ((micros() - delayTimer) < (uint32_t) DelayTime);
+}
+
 void incrementMicros() {
 	_microCounter++;
 }

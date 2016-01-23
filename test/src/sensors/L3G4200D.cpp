@@ -12,9 +12,9 @@ L3G4200D::L3G4200D() {
 
 void L3G4200D::init(I2C *i2c) {
 	I2Cx = i2c;
-	sendBit(L3G4200D_CTRL_REG1, L3G4200D_CTRL_REG1_ON);
-	sendBit(L3G4200D_CTRL_REG4,
-	L3G4200D_CTRL_REG4_CONST_UPDATE | L3G4200D_CTRL_REG4_SCALE_500);
+
+	sendBit(0x20, 0b01001111);
+	sendBit(0x23, 0b10010000);
 
 	zeroX = 0;
 	zeroY = 0;
@@ -52,11 +52,11 @@ void L3G4200D::readAngle(vector &raw, vector &angle) {
 	int16_t x, y, z;
 	readRaw(x, y, z);
 
-	raw.x = x - zeroX;
-	raw.y = y - zeroY;
-	raw.z = z - zeroZ;
+	raw.x = ((float)x) - zeroX;
+	raw.y = ((float)y) - zeroY;
+	raw.z = ((float)z) - zeroZ;
 
-	uint8_t data[1];
+	/*uint8_t data[1];
 	getBits(L3G4200D_CTRL_REG4, 1, data);
 	uint8_t sensitivity = ((data[0] >> 4) & (0b0011));
 
@@ -72,10 +72,10 @@ void L3G4200D::readAngle(vector &raw, vector &angle) {
 		angle.x = raw.x / 70;
 		angle.y = raw.y / 70;
 		angle.z = raw.z / 70;
-	}
+	}*/
 }
 
-void L3G4200D::readAngle(int16_t &x, int16_t &y, int16_t &z) {
+/*void L3G4200D::readAngle(int16_t &x, int16_t &y, int16_t &z) {
 	uint8_t data[1];
 	getBits(L3G4200D_CTRL_REG4, 1, data);
 
@@ -99,7 +99,7 @@ void L3G4200D::readAngle(int16_t &x, int16_t &y, int16_t &z) {
 		z /= 70;
 	}
 
-}
+}*/
 
 /*void L3G4200D::readAngle(vector *v) {
  int16_t x,y,z;
