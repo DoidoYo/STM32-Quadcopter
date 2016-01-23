@@ -9,6 +9,7 @@
 #define QUADCOPTER_H_
 
 #include "core.h"
+#include "math.h"
 
 #include "libs/I2C.h"
 #include "libs/GPIO.h"
@@ -20,7 +21,15 @@
 #include "quad/Motors.h"
 #include "quad/PID.h"
 #include "quad/TaskManager.h"
+///////////////////////////////////////
+/////      STICK SCALING     //////////
+//////////////////////////////////////
 
+#define RATE_ROLL_SCALE  60
+#define RATE_PITCH_SCALE 60
+#define RATE_YAW_SCALE   100
+
+////////////////////////////
 #define BUTTON_PIN GPIO_Pin_0
 #define BUTTON_PORT GPIOA
 
@@ -53,6 +62,23 @@
 #define ROLL 0
 #define PITCH 1
 #define YAW 2
+///////////////////////////////
+
+#define MOTOR_MIN 1000
+#define MOTOR_MAX 1900
+
+#define ARMED 1
+#define UNARMED 0
+
+#define ARMED_TIMEOUT 5000
+
+#define STICK_DEAD 50
+#define STICK_HIGH 1800
+#define STICK_LOW 1100
+#define STICK_MAX MOTOR_MAX
+#define STICK_MIN MOTOR_MIN
+#define STICK_DEAD_MAX ((STICK_MAX+STICK_MIN)/2)+50
+#define STICK_DEAD_MIN ((STICK_MAX+STICK_MIN)/2)-50
 
 ///////////////////////////////
 extern I2C i2c;
@@ -66,13 +92,17 @@ extern GPIO LED_SYS;
 extern GPIO BUZZER;
 extern GPIO BUTTON;
 
-extern vector angleRaw, angleScaled;
+extern vector angleRaw, angleScaled, angleSmooth;
 extern vector accelRaw, accelScaled;
 extern vector headingRaw, headingScaled;
 extern long pressure;
 
+extern int scaledInput[6];
+
 extern PID ratePID[3];
 extern float rateSet[3], rateOut[3], rateIn[3];
+
+extern int Armed;
 
 void initQuad();
 
@@ -84,5 +114,7 @@ void TASK_readAccel();
 void TASK_readMag();
 void TASK_flightController();
 void TASK_receiverCheck();
+void TASK_stickReader();
+
 
 #endif /* QUADCOPTER_H_ */

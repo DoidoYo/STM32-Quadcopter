@@ -35,10 +35,9 @@
 #define L3G4200D_OUT_Z_L       0x2C
 #define L3G4200D_OUT_Z_H       0x2D
 
-//void readGyroTask();
 
 struct vector {
-	int16_t x, y, z;
+	float x, y, z;
 };
 
 class L3G4200D {
@@ -57,7 +56,7 @@ public:
 private:
 	I2C *I2Cx;
 
-	int16_t zeroX, zeroY, zeroZ;
+	float zeroX, zeroY, zeroZ;
 
 	void getBits(uint8_t reg, int bytes, uint8_t *data);
 	void sendBit(uint8_t reg, uint8_t data);

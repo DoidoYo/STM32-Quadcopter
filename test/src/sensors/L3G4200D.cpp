@@ -10,11 +10,6 @@
 L3G4200D::L3G4200D() {
 }
 
-void readGyroTask() {
-	//gyro.readRaw(raw.x, raw.y, raw.z);
-	//readAngle(angle.x,angle.y,angle.z);
-}
-
 void L3G4200D::init(I2C *i2c) {
 	I2Cx = i2c;
 	sendBit(L3G4200D_CTRL_REG1, L3G4200D_CTRL_REG1_ON);
@@ -25,31 +20,41 @@ void L3G4200D::init(I2C *i2c) {
 	zeroY = 0;
 	zeroZ = 0;
 
-	delayMs(150);
+	delayMs(250);
 }
 
 void L3G4200D::calibrate() {
 
 	vector v;
 
-	for (int i = 0; i < 200; i++) {
+	for (int i = 0; i < 1000; i++) {
 		readRaw(v);
 
-		zeroX += v.x;
-		zeroY += v.y;
-		zeroZ += v.z;
+		//printf2("Reading: %i \t %i \t %i \t Zeroes: %i \t %i \t %i \n",
+		//		(int) v.x, (int) v.y, (int) v.z, (int)zeroX, (int)zeroY, (int)zeroZ);
 
-		delayMs(1);
+		zeroX += (float) v.x;
+		zeroY += (float) v.y;
+		zeroZ += (float) v.z;
+
+		delayMs(5);
 	}
 
-	zeroX /= 200;
-	zeroY /= 200;
-	zeroZ /= 200;
+	zeroX /= 1000;
+	zeroY /= 1000;
+	zeroZ /= 1000;
+
+	//printf2("Zeroes: %i \t %i \t %i \n", (int)zeroX,(int)zeroY,(int)zeroZ);
 
 }
 
 void L3G4200D::readAngle(vector &raw, vector &angle) {
-	readRaw(raw);
+	int16_t x, y, z;
+	readRaw(x, y, z);
+
+	raw.x = x - zeroX;
+	raw.y = y - zeroY;
+	raw.z = z - zeroZ;
 
 	uint8_t data[1];
 	getBits(L3G4200D_CTRL_REG4, 1, data);
@@ -115,9 +120,9 @@ void L3G4200D::readRaw(int16_t &x, int16_t &y, int16_t &z) {
 void L3G4200D::readRaw(vector &data) {
 	int16_t x, y, z;
 	readRaw(x, y, z);
-	data.x = x + 28;
-	data.y = y - 33;
-	data.z = z - 31;
+	data.x = x;
+	data.y = y;
+	data.z = z;
 }
 
 void L3G4200D::getBits(uint8_t reg, int bytes, uint8_t *data) {

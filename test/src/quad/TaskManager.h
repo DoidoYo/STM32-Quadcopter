@@ -19,6 +19,7 @@ class TaskManager {
 public:
 
 	static void addTask(Function, int);
+	static void clearTasks();
 	static void run();
 
 private:

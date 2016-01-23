@@ -1,29 +1,20 @@
-/*
- * PID.h
- *
- *  Created on: Jan 22, 2016
- *      Author: Gabriel Fernandes
- */
+// PID.h
 
-#ifndef PID_H_
-#define PID_H_
+#ifndef _PID_h
+#define _PID_h
 
-#include "core.h"
+class PID
+{
+ private:
+	 float _kp, _ki, _kd, _max;
+	 float _error, _error_sum, _last_error, _set, _in, _out;
 
-class PID {
-
-public:
-	PID();
-	void init(float *in, float *out, float *set, float KP, float KI, float KD, float max, float min);
-	void restrain(float max, float min);
+ public:
+	void init(float kp, float ki, float kd, float max);
+	float compute(float input, float set);
 	void reset();
-	void compute();
-
-private:
-	float *_in,*_out,*_set,_KP,_KI,_KD;
-	float lastError, integral, output;
-	float _max,_min;
+	void setTuning(float kp, float ki, float kd, float max);
 };
 
+#endif
 
-#endif /* PID_H_ */

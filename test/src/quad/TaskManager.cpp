@@ -19,6 +19,10 @@ void TaskManager::addTask(Function function, int hz) {
 	counter++;
 }
 
+void TaskManager::clearTasks() {
+	counter = 0;
+}
+
 void TaskManager::run() {
 
 	for(int i=0;i<counter;i++) {

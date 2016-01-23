@@ -10,7 +10,10 @@ int main(void) {
 
 	initQuad();
 
+
 	while (1) {
 		loop();
+
+		//delayMs(100);
 	}
 }
