@@ -10,9 +10,10 @@
 
 #include "stm32f10x.h"
 
- void initMillis();
- void delay(int i);
- uint32_t millis();
- void incrementMillis();
+ void initDelay();
+ void delayMs(int i);
+ uint64_t millis();
+ uint64_t micros();
+ void incrementMicros();
 
 #endif /* DELAY_H_ */

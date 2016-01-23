@@ -46,6 +46,7 @@ class L3G4200D {
 public:
 	L3G4200D();
 	void init(I2C *i2c);
+	void calibrate();
 	void readRaw(int16_t &x, int16_t &y, int16_t &z);
 	//void readRaw(float &x, float &y, float &z);
 	void readRaw(vector &data);
@@ -55,6 +56,8 @@ public:
 
 private:
 	I2C *I2Cx;
+
+	int16_t zeroX, zeroY, zeroZ;
 
 	void getBits(uint8_t reg, int bytes, uint8_t *data);
 	void sendBit(uint8_t reg, uint8_t data);

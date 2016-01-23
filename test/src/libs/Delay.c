@@ -8,22 +8,26 @@
 
 #include "Delay.h"
 
-uint32_t _millisCounter;
+uint64_t _microCounter;
 
-void initMillis() {
-	SysTick_Config(SystemCoreClock / 1000);
+void initDelay() {
+	SysTick_Config(SystemCoreClock / 1000000);
 }
 
-uint32_t millis() {
-	return _millisCounter;
+uint64_t millis() {
+	return _microCounter/1000;
 }
 
-void delay(int DelayTime) {
-	uint32_t delayTimer = 0;
+uint64_t micros() {
+	return _microCounter;
+}
+
+void delayMs(int DelayTime) {
+	uint64_t delayTimer = 0;
 	delayTimer = millis();
 	while ((millis() - delayTimer) < (uint32_t) DelayTime);
 }
 
-void incrementMillis() {
-	_millisCounter++;
+void incrementMicros() {
+	_microCounter++;
 }
